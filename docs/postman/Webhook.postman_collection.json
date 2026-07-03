@@ -1,0 +1,501 @@
+{
+  "info": {
+    "_postman_id": "25bb70ed-8a31-4417-9f77-58fa12b35d93",
+    "name": "Webhook",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44963830",
+    "_collection_link": "https://go.postman.co/collection/44963830-25bb70ed-8a31-4417-9f77-58fa12b35d93?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Webhook API",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://webhook.site/911435ab-5cae-4ed0-b8c4-e54ebc9685a7\",\r\n  \"secret\": \"mysecret123456\",\r\n  \"events\": [\"payment.completed\", \"refund.issued\"],\r\n  \"description\": \"My test webhook\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/webhooks/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "webhooks",
+                "create"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "create",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"url\": \"https://webhook.site/a04a16af-f8d2-4765-9059-4610c8c466e8\",\r\n  \"secret\": \"mysecret123456\",\r\n  \"events\": [\"payment.completed\", \"refund.issued\"],\r\n  \"description\": \"My test webhook\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:4000/api/webhooks/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "4000",
+                  "path": [
+                    "api",
+                    "webhooks",
+                    "create"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "266"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"10a-Y0r6djzf6npPVFCitnph/W8zwuI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 20 Apr 2026 16:51:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"sucess\": true,\n    \"data\": {\n        \"id\": \"69e659af50b0dc31278a6ca0\",\n        \"url\": \"https://webhook.site/a04a16af-f8d2-4765-9059-4610c8c466e8\",\n        \"events\": [\n            \"payment.completed\",\n            \"refund.issued\"\n        ],\n        \"secret\": \"mysecret123456\",\n        \"description\": \"My test webhook\",\n        \"createdAt\": \"2026-04-20T16:51:59.150Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "check_delivery",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/webhooks/6a3faa78db05d5de81fad574/deliveries",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "webhooks",
+                "6a3faa78db05d5de81fad574",
+                "deliveries"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "check_delivery",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:4000/api/webhooks/69e71b08e14fd9281b364df9/deliveries",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "4000",
+                  "path": [
+                    "api",
+                    "webhooks",
+                    "69e71b08e14fd9281b364df9",
+                    "deliveries"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "421"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1a5-QMJB4j7o6IcdXUJ0SUsovpL2HIo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 06:39:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"69e71b22e14fd9281b364dfe\",\n            \"webhookId\": \"69e71b08e14fd9281b364df9\",\n            \"event\": \"payment.completed\",\n            \"status\": \"success\",\n            \"attempts\": 1,\n            \"responseStatus\": 200,\n            \"responseBody\": null,\n            \"errorMessage\": null,\n            \"nextRetryAt\": null,\n            \"completedAt\": \"2026-04-21T06:37:25.671Z\",\n            \"createdAt\": \"2026-04-21T06:37:22.906Z\",\n            \"updatedAt\": \"2026-04-21T06:37:25.672Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"total\": 1,\n        \"page\": 1,\n        \"limit\": 20,\n        \"pages\": 1\n    }\n}"
+            },
+            {
+              "name": "check_delivery",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:4000/api/webhooks/6a3faa78db05d5de81fad574/deliveries",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "4000",
+                  "path": [
+                    "api",
+                    "webhooks",
+                    "6a3faa78db05d5de81fad574",
+                    "deliveries"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "406"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"196-FJfHZ7JYXEvw6eYttbsIKC94UjU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 27 Jun 2026 10:52:24 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"deliveries\": [\n        {\n            \"_id\": \"6a3fab04a9130512693928b3\",\n            \"webhookId\": \"6a3faa78db05d5de81fad574\",\n            \"event\": \"payment.completed\",\n            \"status\": \"pending\",\n            \"attempts\": 0,\n            \"responseStatus\": null,\n            \"responseBody\": null,\n            \"errorMessage\": null,\n            \"nextRetryAt\": null,\n            \"completedAt\": null,\n            \"createdAt\": \"2026-06-27T10:50:44.734Z\",\n            \"updatedAt\": \"2026-06-27T10:50:44.734Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"total\": 1,\n        \"page\": 1,\n        \"limit\": 20,\n        \"pages\": 1\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "webhook_details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/webhooks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "webhooks"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "webhook_details",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:4000/api/webhooks/69e71e5f0d60c3fc5079a644",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "4000",
+                  "path": [
+                    "api",
+                    "webhooks",
+                    "69e71e5f0d60c3fc5079a644"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1717"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6b5-RyJIh4YOe0c0iugRtra29rmUYSI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 07:02:15 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"69e659af50b0dc31278a6ca0\",\n            \"url\": \"https://webhook.site/a04a16af-f8d2-4765-9059-4610c8c466e8\",\n            \"events\": [\n                \"payment.completed\",\n                \"refund.issued\"\n            ],\n            \"isActive\": true,\n            \"description\": \"My test webhook\",\n            \"createdAt\": \"2026-04-20T16:51:59.150Z\",\n            \"updatedAt\": \"2026-04-20T16:51:59.150Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69e66967ac67f22409782547\",\n            \"url\": \"https://webhook.site/a04a16af-f8d2-4765-9059-4610c8c466e8\",\n            \"events\": [\n                \"payment.completed\",\n                \"refund.issued\"\n            ],\n            \"isActive\": true,\n            \"description\": \"My test webhook\",\n            \"createdAt\": \"2026-04-20T17:59:03.618Z\",\n            \"updatedAt\": \"2026-04-20T17:59:03.618Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69e71887156868b97301b519\",\n            \"url\": \"https://webhook.site/a04a16af-f8d2-4765-9059-4610c8c466e8\",\n            \"events\": [\n                \"payment.completed\",\n                \"refund.issued\"\n            ],\n            \"isActive\": true,\n            \"description\": \"My test webhook\",\n            \"createdAt\": \"2026-04-21T06:26:15.529Z\",\n            \"updatedAt\": \"2026-04-21T06:26:15.529Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69e718911b90c4b6d461cd4a\",\n            \"url\": \"https://webhook.site/a04a16af-f8d2-4765-9059-4610c8c466e8\",\n            \"events\": [\n                \"payment.completed\",\n                \"refund.issued\"\n            ],\n            \"isActive\": true,\n            \"description\": \"My test webhook\",\n            \"createdAt\": \"2026-04-21T06:26:25.977Z\",\n            \"updatedAt\": \"2026-04-21T06:26:25.977Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69e71b08e14fd9281b364df9\",\n            \"url\": \"https://webhook.site/a04a16af-f8d2-4765-9059-4610c8c466e8\",\n            \"events\": [\n                \"payment.completed\",\n                \"refund.issued\"\n            ],\n            \"isActive\": true,\n            \"description\": \"My test webhook\",\n            \"createdAt\": \"2026-04-21T06:36:56.388Z\",\n            \"updatedAt\": \"2026-04-21T06:36:56.388Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"69e71e5f0d60c3fc5079a644\",\n            \"url\": \"https://webhook.site/a04a16af-f8d2-4765-9059-4610c8c466e8\",\n            \"events\": [\n                \"payment.completed\",\n                \"refund.issued\"\n            ],\n            \"isActive\": true,\n            \"description\": \"My test webhook\",\n            \"createdAt\": \"2026-04-21T06:51:11.056Z\",\n            \"updatedAt\": \"2026-04-21T06:51:11.056Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/webhooks/delete/69e71e5f0d60c3fc5079a644",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "webhooks",
+                "delete",
+                "69e71e5f0d60c3fc5079a644"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "delete",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:4000/api/webhooks/delete/69e71e5f0d60c3fc5079a644",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "4000",
+                  "path": [
+                    "api",
+                    "webhooks",
+                    "delete",
+                    "69e71e5f0d60c3fc5079a644"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "105"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"69-vL+a6ZtkcMci9j8UzHhb+ibvxaQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 07:12:17 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Webhook dectivated\",\n    \"data\": {\n        \"id\": \"69e71e5f0d60c3fc5079a644\",\n        \"isActive\": false\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Event API",
+      "item": [
+        {
+          "name": "trigger",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"event\": \"payment.completed\",\r\n  \"payload\": {\r\n    \"orderId\": \"ORD123\",\r\n    \"amount\": 500,\r\n    \"currency\": \"INR\",\r\n    \"customerEmail\": \"customer@example.com\",\r\n    \"status\": \"success\"\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/events/trigger",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "events",
+                "trigger"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "trigger",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"event\": \"payment.completed\",\r\n        \"payload\": {\r\n        \"orderId\": \"ORD123\",\r\n            \"amount\": 500,\r\n                \"currency\": \"INR\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:4000/api/events/trigger",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "4000",
+                  "path": [
+                    "api",
+                    "events",
+                    "trigger"
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "259"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"103-pLAxdCnHicOM6vZkI2tFWLddEnQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 06:37:24 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Event queued for 5 webhook(s)\",\n    \"event\": \"payment.completed\",\n    \"deliveriesCreated\": 5,\n    \"deliveryIds\": [\n        \"69e71b22e14fd9281b364dfa\",\n        \"69e71b22e14fd9281b364dfb\",\n        \"69e71b22e14fd9281b364dfc\",\n        \"69e71b22e14fd9281b364dfd\",\n        \"69e71b22e14fd9281b364dfe\"\n    ]\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
