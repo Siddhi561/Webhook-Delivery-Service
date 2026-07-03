@@ -105,6 +105,7 @@ Open `http://localhost:4000` after running `npm run dev:all`.
 - **Webhook management** — register, list, and deactivate webhooks via API
 - **Structured logging** — every delivery attempt logged with Winston in JSON format
 - **Dashboard UI** — dark-themed developer interface for managing and testing the full flow
+- **Database seeder** - with realistic webhook subscriptions and delivery history
 
 ---
 
@@ -127,52 +128,56 @@ Open `http://localhost:4000` after running `npm run dev:all`.
 ```
 webhook-service/
 ├── docs/
-│   ├── images/                     # Architecture diagrams and screenshots
+│   ├── images/                                   # Architecture diagrams, screenshots
 │   └── Webhook.postman_collection.json   # Postman API collection
 │
 ├── public/
-│   └── index.html                  # Developer dashboard UI
+│   └── index.html                                # Developer dashboard UI
 │
 ├── src/
 │   ├── config/
-│   │   ├── redis.js                # Redis connection with retry strategy
-│   │   ├── logger.js               # Winston structured logger
-│   │   └── db.js                   # MongoDB connection
-│   │
-│   ├── models/
-│   │   ├── webhook.js              # Webhook schema (url, secret, events)
-│   │   └── delivery.js             # Delivery schema (attempts, status, response)
-│   │
-│   ├── middleware/
-│   │   ├── asyncHandler.js         # Async error wrapper
-│   │   ├── errorHandler.js         # Global error handler
-│   │   └── validate.js             # Zod schemas and validation middleware
-│   │
-│   ├── queues/
-│   │   └── webhookQueue.js         # BullMQ queue definition
-│   │
-│   ├── workers/
-│   │   └── webhookWorker.js        # Delivery job processor
-│   │
-│   ├── services/
-│   │   ├── deliveryService.js      # HMAC signing and HTTP delivery
-│   │   ├── webhookService.js       # Webhook DB logic (create, list, deactivate)
-│   │   └── eventService.js         # Event trigger logic (find subscribers, queue jobs)
-│   │
-│   ├── routes/
-│   │   ├── webhook.route.js        # Webhook CRUD routes
-│   │   └── event.route.js          # Event trigger route
+│   │   ├── db.js                                 # MongoDB connection
+│   │   ├── logger.js                             # Winston structured logger
+│   │   └── redis.js                              # Redis connection with retry strategy
 │   │
 │   ├── controllers/
-│   │   ├── webhook.controller.js   # Thin HTTP handlers — calls webhookService
-│   │   └── event.controller.js     # Thin HTTP handler — calls eventService
+│   │   ├── event.controller.js                   # Thin HTTP handler → eventService
+│   │   └── webhook.controller.js                 # Thin HTTP handlers → webhookService
 │   │
-│   └── app.js                      # Express app, MongoDB connection, startup
+│   ├── middleware/
+│   │   ├── asyncHandler.js                       # Async error wrapper
+│   │   ├── errorHandler.js                       # Global error handler
+│   │   └── validate.js                           # Zod validation middleware
+│   │
+│   ├── models/
+│   │   ├── delivery.js                           # Delivery schema
+│   │   └── webhook.js                            # Webhook schema
+│   │
+│   ├── queues/
+│   │   └── webhookQueue.js                       # BullMQ queue definition
+│   │
+│   ├── routes/
+│   │   ├── event.route.js                        # Event trigger routes
+│   │   └── webhook.route.js                      # Webhook CRUD routes
+│   │
+│   ├── seeders/
+│   │   └── seed.js                               # Seed demo webhooks and deliveries
+│   │
+│   ├── services/
+│   │   ├── deliveryService.js                    # HMAC signing and webhook delivery
+│   │   ├── eventService.js                       # Event publishing and queue logic
+│   │   └── webhookService.js                     # Webhook CRUD business logic
+│   │
+│   ├── workers/
+│   │   └── webhookWorker.js                      # BullMQ job processor
+│   │
+│   └── app.js                                    # Express app entry point
 │
-├── .env.example                    # Environment variable template
-├── .gitignore                      # Git ignore rules
-├── LICENSE                         # MIT License
+├── .env.example                                  # Environment variables template
+├── .gitignore                                    # Git ignore rules
+├── LICENSE                                       # MIT License
 ├── package.json
+├── package-lock.json
 └── README.md
 ```
 
@@ -207,6 +212,61 @@ REDIS_URL=redis://localhost:6379
 MONGODB_URI=mongodb+srv://user:password@cluster.mongodb.net/webhooks
 LOG_LEVEL=info
 ```
+## Demo Seed Data
+
+To make testing easier, the project includes a database seeder that populates realistic demo data.
+
+### Seed Commands
+
+```bash
+# Insert demo data
+npm run seed
+
+# Remove all seeded data
+npm run seed:clear
+
+# Reset the database
+npm run seed:clear && npm run seed
+```
+
+### What the Seeder Creates
+
+- 2 webhook subscriptions
+  - 1 Active
+  - 1 Inactive
+
+- 6 delivery records across both webhooks
+
+Including:
+
+- Successful deliveries
+- Failed deliveries
+- Pending deliveries
+- Multiple event types
+- Realistic request payloads and responses
+
+### Dashboard After Seeding
+
+Once seeded, open:
+
+http://localhost:4000
+
+You'll see:
+
+- Dashboard statistics already populated
+- Active webhook with:
+  - 2 Successful deliveries
+  - 1 Failed delivery
+  - 1 Pending delivery
+- Inactive webhook with:
+  - 1 Successful delivery
+  - 1 Failed delivery
+
+### Delivery History
+
+The seeder prints both webhook IDs to the terminal.
+Copy either ID and paste it into the **Delivery History** section of the dashboard to instantly view delivery records without opening MongoDB Atlas.
+
 
 ### Run
 
