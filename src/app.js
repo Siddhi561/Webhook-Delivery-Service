@@ -2,8 +2,6 @@ import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { logger } from './config/logger.js';
-import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
 import webhookRoutes from './routes/webhook.route.js';
 import eventRoutes from './routes/event.route.js';
@@ -33,20 +31,5 @@ app.get('/', (req, res) => {
 });
 
 app.use(errorHandler);
-
-const start = async () => {
-  try {
-    await connectDB();
-    const PORT = process.env.PORT || 4000;
-    app.listen(PORT, () => {
-      logger.info('Server started', { port: PORT });
-    });
-  } catch (err) {
-    logger.error('Failed to start server', { error: err.message });
-    process.exit(1);
-  }
-};
-
-start();
 
 export default app;
